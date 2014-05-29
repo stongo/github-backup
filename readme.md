@@ -5,7 +5,7 @@
 Archives an organization's repositories. Runs "git clone --mirror" on all repos of an organization and tarballs in to one file.
 You must [generate an oauth token](https://github.com/settings/applications#personal-access-tokens)
 
-## Instructions to archive:
+## Instructions to archive
 
 ```sh
 export GITHUB_AUTH_TOKEN=enter_oauth_token_here
