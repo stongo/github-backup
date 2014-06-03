@@ -23,11 +23,21 @@ curl "https://raw.github.com/andyet/github-backup-sh/master/github-backup.sh" | 
 
 ## Restoring
 
-After unarchiving, clone a given repository and change the remote if desired:
+Create a new remote repository with nothing in it and then:
 
 ```sh
-git clone /path/to/project.git
+# extract archive to /tmp
+tar -C /tmp -xf repo-2014-6-21.git.tgz
+
+# clone project.git normally. /tmp/project.git is what gets extracted and is the output of the initial git clone --mirror
+git clone /tmp/project.git
+
+# change directory to the project
 cd project
+
+# change the remote url
 git remote set-url origin https://new-remote.com/project.git
+
+# push to new remote repository
 git push origin master --tags
 ```
