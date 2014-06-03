@@ -29,5 +29,5 @@ After unarchiving, clone a given repository and change the remote if desired:
 git clone /path/to/project.git
 cd project
 git remote set-url origin https://new-remote.com/project.git
-git push origin master
+git push origin master --tags
 ```
