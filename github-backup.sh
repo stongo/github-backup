@@ -7,6 +7,15 @@
 
 set -ex
 
+on_exit()
+{
+    if [ ! -z $TEMP_DIR ] && [ -d $TEMP_DIR ]; then
+        rm -rf $TEMP_DIR
+    fi
+}
+
+trap on_exit EXIT
+
 ORG="$1"
 USER="$2"
 AUTHENTICATION_API_TOKEN="${GITHUB_AUTH_TOKEN:?"must be set and non-empty"}:x-oauth-basic"
@@ -19,5 +28,3 @@ curl -u $AUTHENTICATION_API_TOKEN -s "$REPOS_API_URL" | grep -Eo '"clone_url": "
  awk '{print $2}' | sed s"#\"https://#\"https://$USER:$GITHUB_AUTH_TOKEN@#" | xargs -n 1 git clone --mirror
 cd -
 tar zcf "$BACKUP_FILE" "$TEMP_DIR"
-rm -rf "$TEMP_DIR"
-
