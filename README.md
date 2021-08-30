@@ -9,7 +9,7 @@ You must [generate an oauth token](https://github.com/settings/applications#pers
 
 ```sh
 export GITHUB_AUTH_TOKEN=enter_oauth_token_here
-github-backup.sh <organization_name>
+github-backup.sh <organization_name> <username for git clone>
 ```
 
 Generates tgz archive of all GitHub repos.
