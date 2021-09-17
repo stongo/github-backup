@@ -26,4 +26,4 @@ cd "$TEMP_DIR"
 curl -u $AUTHENTICATION_API_TOKEN -s "$REPOS_API_URL" | grep -Eo '"clone_url": "[^"]+"' |\
  awk '{print $2}' | sed s"#\"https://#\"https://$GITHUB_AUTH_TOKEN@#" | xargs -n 1 git clone --mirror
 
-tar zcf "$BACKUP_FILE" "$TEMP_DIR"
+tar zcf "$BACKUP_FILE" -C "$TEMP_DIR" .
